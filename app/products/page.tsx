@@ -51,18 +51,40 @@
 
 // export default ProductsPage;
 
+// import React from "react";
+// import ProductsContainer from "@/components/products/ProductsContainer";
+// import { fetchAllProducts } from "@/utils/actions";
+
+// export default async function ProductsPage({
+//   searchParams,
+// }: {
+//   searchParams?: { layout?: string; search?: string };
+// }) {
+//   // Handle search and layout params safely
+//   const layout = searchParams?.layout || "grid";
+//   const search = searchParams?.search || "";
+
+//   // Fetch products on the server side
+//   const products = await fetchAllProducts({ search });
+
+//   return (
+//     <ProductsContainer layout={layout} search={search} products={products} />
+//   );
+// }
+
 import React from "react";
 import ProductsContainer from "@/components/products/ProductsContainer";
 import { fetchAllProducts } from "@/utils/actions";
 
+type ProductsPageProps = {
+  searchParams: Promise<{ layout?: string; search?: string }>;
+};
+
 export default async function ProductsPage({
   searchParams,
-}: {
-  searchParams?: { layout?: string; search?: string };
-}) {
-  // Handle search and layout params safely
-  const layout = searchParams?.layout || "grid";
-  const search = searchParams?.search || "";
+}: ProductsPageProps) {
+  // Await searchParams to match the expected type
+  const { layout = "grid", search = "" } = await searchParams;
 
   // Fetch products on the server side
   const products = await fetchAllProducts({ search });
