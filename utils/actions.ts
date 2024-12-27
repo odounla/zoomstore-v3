@@ -38,13 +38,30 @@ import db from "../utils/db";
 import { redirect } from "next/navigation";
 
 // Fetch Featured Products
+// export const fetchFeaturedProducts = async () => {
+//   const products = await db.product.findMany({
+//     where: {
+//       featured: true,
+//     },
+//   });
+//   return products;
+// };
+
+// Example of fetchFeaturedProducts
+// import db from "@/utils/db";
+
 export const fetchFeaturedProducts = async () => {
-  const products = await db.product.findMany({
-    where: {
-      featured: true,
-    },
-  });
-  return products;
+  try {
+    const products = await db.product.findMany({
+      where: {
+        featured: true,
+      },
+    });
+    return products;
+  } catch (error) {
+    console.error("Error fetching featured products:", error);
+    throw new Error("Failed to fetch featured products");
+  }
 };
 
 // Corrected: Fetch All Products
