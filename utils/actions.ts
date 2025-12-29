@@ -125,11 +125,21 @@ export const createProductAction = async (
     const validatedFile = validateWithZodSchema(imageSchema, { image: file });
     const fullPath = await uploadImage(validatedFile.image);
 
+    let category = await db.category.findFirst();
+    if (!category) {
+      category = await db.category.create({
+        data: {
+          name: 'Uncategorized',
+        },
+      });
+    }
+
     await db.product.create({
       data: {
         ...validatedFields,
         image: fullPath,
         clerkId: user.id,
+        categoryId: category.id,
       },
     });
 
@@ -153,11 +163,21 @@ export const createProductActionDashboard = async (
     const validatedFile = validateWithZodSchema(imageSchema, { image: file });
     const fullPath = await uploadImage(validatedFile.image);
 
+    let category = await db.category.findFirst();
+    if (!category) {
+      category = await db.category.create({
+        data: {
+          name: 'Uncategorized',
+        },
+      });
+    }
+
     await db.product.create({
       data: {
         ...validatedFields,
         image: fullPath,
         clerkId: user.id,
+        categoryId: category.id,
       },
     });
 
