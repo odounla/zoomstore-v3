@@ -86,8 +86,8 @@ export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
   const products = await db.product.findMany({
     where: {
       OR: [
-        { name: { contains: search, mode: "insensitive" } },
-        { company: { contains: search, mode: "insensitive" } },
+        { name: { contains: search } },
+        { company: { contains: search } },
       ],
     },
     orderBy: {
@@ -123,7 +123,7 @@ export const createProductAction = async (
     const file = formData.get("image") as File;
     const validatedFields = validateWithZodSchema(productSchema, rawData);
     const validatedFile = validateWithZodSchema(imageSchema, { image: file });
-    const fullPath = await uploadImage(file);
+    const fullPath = await uploadImage(validatedFile.image);
 
     await db.product.create({
       data: {
@@ -132,10 +132,41 @@ export const createProductAction = async (
         clerkId: user.id,
       },
     });
-    // return {message: 'Product created'}
+
+
   } catch (error) {
     return renderError(error);
   }
 
-  redirect("/admin/products");
+  redirect('/admin/products')
+};
+
+export const createProductActionDashboard = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  const user = await getAuthUser();
+  try {
+    const rawData = Object.fromEntries(formData);
+    const file = formData.get("image") as File;
+    const validatedFields = validateWithZodSchema(productSchema, rawData);
+    const validatedFile = validateWithZodSchema(imageSchema, { image: file });
+    const fullPath = await uploadImage(validatedFile.image);
+
+    await db.product.create({
+      data: {
+        ...validatedFields,
+        image: fullPath,
+        clerkId: user.id,
+      },
+    });
+
+    // transform string to path for revalidation
+    const { revalidatePath } = await import('next/cache');
+    revalidatePath('/dashboard');
+    return { message: 'Product created successfully' };
+
+  } catch (error) {
+    return renderError(error);
+  }
 };

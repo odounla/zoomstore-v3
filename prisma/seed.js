@@ -3,9 +3,18 @@ const products = require("./products.json");
 const prisma = new PrismaClient();
 
 async function main() {
+  const category = await prisma.category.upsert({
+    where: { name: 'Furniture' },
+    update: {},
+    create: { name: 'Furniture' },
+  });
+
   for (const product of products) {
     await prisma.product.create({
-      data: product,
+      data: {
+        ...product,
+        categoryId: category.id,
+      },
     });
   }
 }

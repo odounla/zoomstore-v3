@@ -1,23 +1,23 @@
-import { createClient } from "@supabase/supabase-js";
-
-const bucket = "main-bucket";
-
-// Create a single supabase client for interacting with your database
-export const supabase = createClient(
-  process.env.SUPABASE_URL as string,
-  process.env.SUPABASE_KEY as string
-);
+import { writeFile } from 'fs/promises';
+import path from 'path';
 
 export const uploadImage = async (image: File) => {
   const timestamp = Date.now();
-  // const newName = `/users/${timestamp}-${image.name}`;
   const newName = `${timestamp}-${image.name}`;
 
-  const { data, error } = await supabase.storage
-    .from(bucket)
-    .upload(newName, image, {
-      cacheControl: "3600",
-    });
-  if (!data) throw new Error("Image upload failed");
-  return supabase.storage.from(bucket).getPublicUrl(newName).data.publicUrl;
+  // Convert File to Buffer
+  const bytes = await image.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+
+  // Write to public/products
+  const uploadDir = path.join(process.cwd(), 'public', 'products');
+  const filePath = path.join(uploadDir, newName);
+
+  await writeFile(filePath, buffer);
+
+  // Return public URL
+  return `/products/${newName}`;
 };
+
+// Mock Supabase export if needed by other files (though unused now)
+export const supabase = null;

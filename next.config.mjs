@@ -6,10 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.pexels.com",
       },
-      {
-        protocol: "https",
-        hostname: "https://rrcephfrsobyjxrnoapq.supabase.co",
-      },
+      // {
+      //   protocol: "https",
+      //   hostname: "https://rrcephfrsobyjxrnoapq.supabase.co",
+      // },
       // {
       //   protocol: "https",
       //   hostname: "ibbdetibjuzwrprbiayt.supabase.co",
