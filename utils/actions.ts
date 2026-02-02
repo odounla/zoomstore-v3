@@ -97,6 +97,16 @@ export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
   return products;
 };
 
+export const fetchLatestProducts = async () => {
+  const products = await db.product.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 10,
+  });
+  return products;
+};
+
 // Fetch Single Product
 export const fetchSingleProduct = async (productId: string) => {
   const product = await db.product.findUnique({

@@ -1,13 +1,19 @@
 import LoadingContainer from "@/components/global/LoadingContainer";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
-import Hero from "@/components/home/Hero";
+import PromotionalHero from "@/components/home/PromotionalHero";
+import DiscoveryGrid from "@/components/home/DiscoveryGrid";
+import HorizontalProductList from "@/components/home/HorizontalProductList";
 import { Suspense } from "react";
-const HomePage = () => {
+import { fetchFeaturedProducts } from "@/utils/actions";
+
+const HomePage = async () => {
+  const featuredProducts = await fetchFeaturedProducts();
+
   return (
     <>
-      <Hero />
+      <PromotionalHero />
+      <DiscoveryGrid />
       <Suspense fallback={<LoadingContainer />}>
-        <FeaturedProducts />
+        <HorizontalProductList products={featuredProducts} title="Best Sellers" />
       </Suspense>
     </>
   );

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "npx prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:sqlite": "node scripts/switch-db.js sqlite && npx prisma generate",
+    "db:postgres": "node scripts/switch-db.js postgres && npx prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.5",
