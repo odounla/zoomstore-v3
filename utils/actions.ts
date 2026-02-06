@@ -78,10 +78,7 @@ export const fetchFeaturedProducts = async () => {
 export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
   const products = await db.product.findMany({
     where: {
-      OR: [
-        { name: { contains: search, mode: "insensitive" } },
-        { company: { contains: search, mode: "insensitive" } },
-      ],
+      OR: [{ name: { contains: search } }, { company: { contains: search } }],
     },
     orderBy: {
       createdAt: "desc",

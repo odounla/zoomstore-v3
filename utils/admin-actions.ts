@@ -77,10 +77,7 @@ export const fetchAdminOrders = async () => {
   });
 };
 
-export const updateOrderStatusAction = async (
-  prevState: any,
-  formData: FormData
-) => {
+export const updateOrderStatusAction = async (formData: FormData) => {
   await requireAdminUser();
   const raw = Object.fromEntries(formData);
   const validated = validateWithZodSchema(orderStatusSchema, raw);
@@ -92,7 +89,7 @@ export const updateOrderStatusAction = async (
     },
   });
   revalidatePath("/admin/orders");
-  return { message: "Order updated" };
+  return;
 };
 
 export const fetchAdminMetrics = async () => {

@@ -2,6 +2,7 @@
 
 import { LuImagePlus, LuLoader, LuCheck, LuPlus } from 'react-icons/lu';
 import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 import { toast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
 
@@ -82,6 +83,12 @@ export default function DashboardForm() {
             setPreview(url);
         }
     };
+
+    useEffect(() => {
+        return () => {
+            if (preview) URL.revokeObjectURL(preview);
+        };
+    }, [preview]);
 
     return (
         <form onSubmit={handleSubmit} className="bg-white/50 backdrop-blur-xl border border-white/20 shadow-xl rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden dark:bg-black/30 dark:border-white/10">
@@ -168,7 +175,13 @@ export default function DashboardForm() {
 
                         {preview ? (
                             <div className="relative w-full h-full rounded-xl overflow-hidden shadow-sm">
-                                <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+                                <Image
+                                    src={preview}
+                                    alt="Preview"
+                                    fill
+                                    className="object-cover"
+                                    unoptimized
+                                />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                     <p className="text-white font-medium text-sm">Click to change</p>
                                 </div>
@@ -206,8 +219,3 @@ export default function DashboardForm() {
         </form>
     );
 }
-    useEffect(() => {
-        return () => {
-            if (preview) URL.revokeObjectURL(preview);
-        };
-    }, [preview]);
