@@ -1,15 +1,10 @@
 import DashboardForm from '@/components/dashboard/DashboardForm';
 import DashboardGrid from '@/components/dashboard/DashboardGrid';
 import { Separator } from '@/components/ui/separator';
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
+import { requireAdminUser } from '@/utils/auth';
 
-export default function DashboardPage() {
-    const { userId } = auth();
-
-    if (!userId) {
-        redirect('/sign-in');
-    }
+export default async function DashboardPage() {
+    await requireAdminUser();
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden">

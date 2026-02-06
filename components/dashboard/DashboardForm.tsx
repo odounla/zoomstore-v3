@@ -1,7 +1,7 @@
 'use client';
 
 import { LuImagePlus, LuLoader, LuCheck, LuPlus } from 'react-icons/lu';
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
 
@@ -130,7 +130,6 @@ export default function DashboardForm() {
                 </div>
 
                 <input type="hidden" name="description" value="Added via API" />
-                <input type="hidden" name="description" value="Added via API" />
 
                 <div className="flex items-center space-x-2 bg-gray-50 dark:bg-white/5 p-3 rounded-xl border border-gray-100 dark:border-white/10">
                     <input
@@ -207,3 +206,8 @@ export default function DashboardForm() {
         </form>
     );
 }
+    useEffect(() => {
+        return () => {
+            if (preview) URL.revokeObjectURL(preview);
+        };
+    }, [preview]);

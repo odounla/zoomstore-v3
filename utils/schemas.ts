@@ -23,6 +23,15 @@ export const imageSchema = z.object({
   image: validateImageFile(),
 });
 
+export const productUpdateSchema = z.object({
+  name: z.string().min(2).max(100).optional(),
+  company: z.string().optional(),
+  featured: z.coerce.boolean().optional(),
+  price: z.coerce.number().int().min(0).optional(),
+  description: z.string().optional(),
+  categoryId: z.string().optional(),
+});
+
 function validateImageFile() {
   const maxUploadSize = 1024 * 1024;
   const acceptedFileTypes = ["image/"];

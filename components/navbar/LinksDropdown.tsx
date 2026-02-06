@@ -14,10 +14,11 @@ import UserIcon from "./UserIcon";
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import SignOutLink from "./SignOutLink";
 import { auth } from "@clerk/nextjs/server";
+import { isAdminUserId } from "@/utils/auth";
 
 function LinksDropdown() {
   const { userId } = auth();
-  const isAdmin = userId === process.env.ADMIN_USER_ID;
+  const isAdmin = isAdminUserId(userId);
 
   return (
     <DropdownMenu>

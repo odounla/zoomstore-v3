@@ -1,8 +1,10 @@
 import { Separator } from "@/components/ui/separator";
 import React from "react";
 import Sidebar from "./Sidebar";
+import { requireAdminUser } from "@/utils/auth";
 
-function DashboardLayout({ children }: { children: React.ReactNode }) {
+async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  await requireAdminUser();
   return (
     <>
       <h2 className="text-2xl pl-4">Dashboard</h2>

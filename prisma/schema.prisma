@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -53,8 +53,8 @@ model Order {
   tax       Int
   shipping  Int
   email     String
-  orderStatus String
-  paymentStatus String
+  orderStatus String @default("PENDING")
+  paymentStatus String @default("UNPAID")
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   orderItems OrderItem[]
@@ -92,4 +92,3 @@ model CartItem {
   cartId    String
   amount    Int
 }
-
