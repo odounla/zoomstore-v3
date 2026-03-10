@@ -34,7 +34,7 @@ function DiscoveryGrid() {
                 {/* Card 2: Thumbnail Card */}
                 <AmazonThumbnailCard
                     title="Popular essentials for your home"
-                    mainImage="https://images.pexels.com/photos/159213/hall-floor-entrance-wooden-floor-159213.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    mainImage="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=800"
                     mainImageAlt="Home Essentials"
                     thumbnails={[
                         "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=800",

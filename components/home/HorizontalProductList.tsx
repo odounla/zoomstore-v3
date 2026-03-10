@@ -25,12 +25,12 @@ async function HorizontalProductList({ products, title }: { products: Product[],
                         <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
                     </div>
 
-                    <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x items-start">
+                    <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar items-start">
                         {products.map((product) => (
                             <Link
                                 key={product.id}
                                 href={`/products/${product.id}`}
-                                className="min-w-[160px] max-w-[160px] sm:min-w-[200px] sm:max-w-[200px] flex flex-col group/item snap-start"
+                                className="min-w-[160px] max-w-[160px] sm:min-w-[200px] sm:max-w-[200px] flex flex-col group/item"
                             >
                                 <div className="relative aspect-square mb-2 bg-[#f8f8f8] dark:bg-zinc-800 overflow-hidden">
                                     <Image

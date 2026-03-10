@@ -38,12 +38,12 @@ export default function AmazonThumbnailCard({
                 {/* Row of 4 small thumbnails */}
                 <div className="grid grid-cols-4 gap-2">
                     {thumbnails.slice(0, 4).map((thumb, index) => (
-                        <div key={index} className="relative aspect-square w-full bg-gray-50 dark:bg-zinc-800 rounded border border-gray-200 dark:border-zinc-700 overflow-hidden">
+                        <div key={index} className="relative aspect-square w-full bg-gray-50 dark:bg-zinc-800 rounded overflow-hidden">
                             <Image
                                 src={thumb}
                                 alt={`Thumbnail ${index + 1}`}
                                 fill
-                                className="object-contain p-1 mix-blend-multiply dark:mix-blend-normal"
+                                className="object-cover hover:opacity-90 transition-opacity"
                                 sizes="(max-width: 768px) 25vw, 10vw"
                             />
                         </div>
