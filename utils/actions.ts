@@ -70,31 +70,41 @@ export const fetchFeaturedProducts = async () => {
     return products;
   } catch (error) {
     console.error("Error fetching featured products:", error);
-    throw new Error("Failed to fetch featured products");
+    return [];
   }
 };
 
 // Corrected: Fetch All Products
 export const fetchAllProducts = async ({ search = "" }: { search: string }) => {
-  const products = await db.product.findMany({
-    where: {
-      OR: [{ name: { contains: search } }, { company: { contains: search } }],
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-  return products;
+  try {
+    const products = await db.product.findMany({
+      where: {
+        OR: [{ name: { contains: search, mode: "insensitive" } }, { company: { contains: search, mode: "insensitive" } }],
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return products;
+  } catch (error) {
+    console.error("Error fetching all products:", error);
+    return [];
+  }
 };
 
 export const fetchLatestProducts = async () => {
-  const products = await db.product.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-    take: 10,
-  });
-  return products;
+  try {
+    const products = await db.product.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 10,
+    });
+    return products;
+  } catch (error) {
+    console.error("Error fetching latest products:", error);
+    return [];
+  }
 };
 
 // Fetch Single Product
