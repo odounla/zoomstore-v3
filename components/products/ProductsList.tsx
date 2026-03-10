@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Product } from "@prisma/client";
 import Image from "next/image";
-import FavoriteToggleButton from "./FavoriteToggleButton";
 
 function ProductsList({ products }: { products: Product[] }) {
   return (
@@ -25,7 +24,7 @@ function ProductsList({ products }: { products: Product[] }) {
                       fill
                       sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw, 33vw"
                       priority
-                      className="w-full rounded object-cover"
+                      className="w-full rounded object-contain"
                     />
                   </div>
                   <div>
@@ -40,9 +39,6 @@ function ProductsList({ products }: { products: Product[] }) {
                 </CardContent>
               </Card>
             </Link>
-            <div className="absolute bottom-8 right-8 z-5">
-              <FavoriteToggleButton productId={productId} />
-            </div>
           </article>
         );
       })}

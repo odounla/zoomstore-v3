@@ -4,7 +4,6 @@ import { formatCurrency } from "@/utils/format";
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
-import FavoriteToggleButton from "./FavoriteToggleButton";
 
 function ProductsGrid({ products }: { products: Product[] }) {
   return (
@@ -26,7 +25,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
                       fill
                       sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
                       priority
-                      className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                      className="rounded w-full object-contain transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
                   <div className="mt-4 text-center">
@@ -38,9 +37,6 @@ function ProductsGrid({ products }: { products: Product[] }) {
                 </CardContent>
               </Card>
             </Link>
-            <div className="absolute top-7 right-7 z-5">
-              <FavoriteToggleButton productId={productId} />
-            </div>
           </article>
         );
       })}
