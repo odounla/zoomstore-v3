@@ -8,15 +8,15 @@ function PromotionalHero() {
             <div className="absolute inset-0 z-0 flex transition-transform duration-700 group-hover:scale-105">
                 <div
                     className="w-1/3 h-full bg-cover bg-center border-r-4 border-black transition-opacity duration-300 hover:opacity-100 opacity-80"
-                    style={{ backgroundImage: "url('/hero/model_basketball.png')", backgroundPosition: "top center" }}
+                    style={{ backgroundImage: "url('https://epicsports.cachefly.net/images/233105/500/womens-sleeveless-reversible-basketball-jersey.jpg')", backgroundPosition: "center center", backgroundColor: "white", backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
                 />
                 <div
                     className="w-1/3 h-full bg-cover bg-center border-r-4 border-black transition-opacity duration-300 hover:opacity-100 opacity-80"
-                    style={{ backgroundImage: "url('/hero/model_softball.png')", backgroundPosition: "center center" }}
+                    style={{ backgroundImage: "url('https://epicsports.cachefly.net/images/233587/500/augusta-womens-closer-softball-jersey.jpg')", backgroundPosition: "center center", backgroundColor: "white", backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
                 />
                 <div
                     className="w-1/3 h-full bg-cover bg-center transition-opacity duration-300 hover:opacity-100 opacity-80"
-                    style={{ backgroundImage: "url('/hero/model_volleyball.png')", backgroundPosition: "top center" }}
+                    style={{ backgroundImage: "url('https://epicsports.cachefly.net/images/107868/500/ladies-long-sleeve-volleyball-jersey.jpg')", backgroundPosition: "center center", backgroundColor: "white", backgroundSize: "contain", backgroundRepeat: "no-repeat" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
             </div>
