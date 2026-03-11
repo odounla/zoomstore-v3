@@ -33,11 +33,11 @@ function DiscoveryGrid() {
         { name: "Decor", image: "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
     ];
 
-    const petItems: GridItem[] = [
-        { name: "Toys", image: "https://images.pexels.com/photos/208773/pexels-photo-208773.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
-        { name: "Beds", image: "https://images.pexels.com/photos/1782298/pexels-photo-1782298.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
-        { name: "Food", image: "/images/sports/pet_food_bowl.png", link: "/products" },
-        { name: "Apparel", image: "https://images.pexels.com/photos/18411516/pexels-photo-18411516.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+    const apparelItems: GridItem[] = [
+        { name: "Men's Apparel", image: "https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Women's Apparel", image: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Footwear", image: "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Accessories", image: "https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
     ];
 
     return (
@@ -113,10 +113,10 @@ function DiscoveryGrid() {
                     linkHref="/products"
                 />
 
-                {/* Card 7: Shop for your pets (2x2 Grid) */}
+                {/* Card 7: Shop apparel (2x2 Grid) */}
                 <AmazonGridCard
-                    title="Categories for your pets"
-                    items={petItems}
+                    title="Shop everyday apparel"
+                    items={apparelItems}
                     linkText="See more"
                     linkHref="/products"
                 />
