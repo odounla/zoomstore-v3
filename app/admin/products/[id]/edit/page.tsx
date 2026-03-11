@@ -39,7 +39,7 @@ async function EditProductPage({ params }: { params: { id: string } }) {
               <div className="relative w-32 h-32 mb-4 bg-gray-50 border rounded-md overflow-hidden">
                 <Image src={product.image} alt={product.name} fill className="object-contain p-2" />
               </div>
-              <ImageInput />
+              <ImageInput required={false} />
               <p className="text-xs text-gray-500 mt-1">Leave blank to keep the current image.</p>
             </div>
           </div>

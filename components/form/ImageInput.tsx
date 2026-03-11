@@ -3,14 +3,14 @@ import { Input } from "../ui/input";
 
 import React from "react";
 
-function ImageInput() {
+function ImageInput({ required = true }: { required?: boolean }) {
   const name = "image";
   return (
     <div className="mb-2">
       <Label htmlFor={name} className="capitalize">
         Image
       </Label>
-      <Input id={name} type="file" name={name} required accept="image/*" />
+      <Input id={name} type="file" name={name} required={required} accept="image/*" />
     </div>
   );
 }
