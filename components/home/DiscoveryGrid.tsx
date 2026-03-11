@@ -42,7 +42,7 @@ function DiscoveryGrid() {
 
     return (
         <div className="bg-[#e3e6e6] dark:bg-black w-full pb-4 pt-1 sm:pt-4">
-            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-5 -mt-20 sm:-mt-64 relative z-20 max-w-[1500px] mx-auto auto-rows-[420px]">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-5 -mt-10 sm:-mt-24 md:-mt-32 lg:-mt-40 relative z-20 max-w-[1500px] mx-auto auto-rows-[420px]">
 
                 {/* Card 1: Continue shopping deals (2x2 Grid) */}
                 <AmazonGridCard
