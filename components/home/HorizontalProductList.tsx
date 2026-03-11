@@ -32,13 +32,13 @@ async function HorizontalProductList({ products, title }: { products: Product[],
                                 href={`/products/${product.id}`}
                                 className="min-w-[160px] max-w-[160px] sm:min-w-[200px] sm:max-w-[200px] flex flex-col group/item"
                             >
-                                <div className="relative aspect-square mb-2 bg-[#f8f8f8] dark:bg-zinc-800 overflow-hidden">
+                                <div className="relative aspect-square mb-2 rounded-lg bg-[#f8f8f8] dark:bg-zinc-800 p-4 flex items-center justify-center overflow-hidden group-hover/item:bg-gray-100 transition-colors">
                                     <Image
                                         src={product.image}
                                         alt={product.name}
                                         fill
                                         sizes="(max-width: 768px) 160px, 200px"
-                                        className="object-contain p-2 mix-blend-multiply dark:mix-blend-normal group-hover/item:scale-105 transition-transform duration-300"
+                                        className="object-contain p-4 mix-blend-multiply dark:mix-blend-normal transform group-hover/item:scale-105 transition-transform duration-300"
                                     />
                                 </div>
                                 <h3 className="font-medium text-[13px] leading-tight text-[#007185] dark:text-[#5bc0de] hover:text-[#c45500] hover:underline line-clamp-2 mt-1 mb-1">

@@ -222,15 +222,17 @@ async function SingleProductPage({ params }: ProductPageProps) {
       <BreadCrumbs name={name} />
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
         {/* IMAGE FIRST COL */}
-        <div className="relative h-full">
-          <Image
-            src={image}
-            alt={name}
-            fill
-            sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-            priority
-            className="w-full rounded object-contain"
-          />
+        <div className="relative h-96 md:h-[500px] w-full rounded-xl bg-[#f8f8f8] dark:bg-zinc-800 p-4 md:p-8 flex items-center justify-center shadow-sm border border-gray-100 dark:border-zinc-700">
+          <div className="relative h-full w-full">
+            <Image
+              src={image}
+              alt={name}
+              fill
+              sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+              priority
+              className="object-contain mix-blend-multiply dark:mix-blend-normal hover:scale-105 transition-transform duration-500"
+            />
+          </div>
         </div>
 
         {/* PRODUCT INFO SECOND COL */}

@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description: "A store where it is easy to shop",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
