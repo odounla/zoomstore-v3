@@ -9,7 +9,7 @@ function DiscoveryGrid() {
         { name: "Indoor Game Balls", image: "/images/sports/sport_basketball_leather_1773193851255.png", link: "/products" },
         { name: "Composite Leather", image: "/images/sports/sport_basketball_two_tone_1773193861500.png", link: "/products" },
         { name: "Outdoor Rubber", image: "/images/sports/sport_basketball_camo_1773193873098.png", link: "/products" },
-        { name: "Hoops & Nets", image: "https://images.pexels.com/photos/1080882/pexels-photo-1080882.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Hoops & Nets", image: "/images/sports/sport_basketball_hoop.png", link: "/products" },
     ];
 
     const volleyballItems: GridItem[] = [
@@ -36,7 +36,7 @@ function DiscoveryGrid() {
     const petItems: GridItem[] = [
         { name: "Toys", image: "https://images.pexels.com/photos/208773/pexels-photo-208773.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
         { name: "Beds", image: "https://images.pexels.com/photos/1782298/pexels-photo-1782298.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
-        { name: "Food", image: "https://images.pexels.com/photos/6816867/pexels-photo-6816867.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Food", image: "/images/sports/pet_food_bowl.png", link: "/products" },
         { name: "Apparel", image: "https://images.pexels.com/photos/18411516/pexels-photo-18411516.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
     ];
 
