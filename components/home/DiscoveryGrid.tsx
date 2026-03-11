@@ -5,6 +5,13 @@ import AmazonGridCard, { GridItem } from "./AmazonGridCard";
 import AmazonThumbnailCard from "./AmazonThumbnailCard";
 
 function DiscoveryGrid() {
+    const basketballItems: GridItem[] = [
+        { name: "Indoor Game Balls", image: "/images/sports/sport_basketball_leather_1773193851255.png", link: "/products" },
+        { name: "Composite Leather", image: "/images/sports/sport_basketball_two_tone_1773193861500.png", link: "/products" },
+        { name: "Outdoor Rubber", image: "/images/sports/sport_basketball_camo_1773193873098.png", link: "/products" },
+        { name: "Hoops & Nets", image: "https://images.pexels.com/photos/1080882/pexels-photo-1080882.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+    ];
+
     const volleyballItems: GridItem[] = [
         { name: "Volleyballs", image: "/images/sports/sport_volleyball_1773192635433.png", link: "/products" },
         { name: "Knee Pads", image: "/images/sports/sport_kneepads_1773192648510.png", link: "/products" },
@@ -19,25 +26,18 @@ function DiscoveryGrid() {
         { name: "Awards", image: "/images/sports/sport_trophy_1773192755404.png", link: "/products" },
     ];
 
-    const fanGearItems: GridItem[] = [
-        { name: "Baseball Caps", image: "/images/sports/sport_cap_1773192700319.png", link: "/products" },
-        { name: "Goalkeeping", image: "/images/sports/sport_cleats_1773192686506.png", link: "/products" },
-        { name: "Match Balls", image: "/images/sports/sport_soccerball_1773192675083.png", link: "/products" },
-        { name: "Trophies", image: "/images/sports/sport_trophy_1773192755404.png", link: "/products" },
+    const dealsItems: GridItem[] = [
+        { name: "Electronics", image: "https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Furniture", image: "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Appliances", image: "https://images.pexels.com/photos/213162/pexels-photo-213162.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Decor", image: "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
     ];
 
-    const fieldItems: GridItem[] = [
-        { name: "Goals & Nets", image: "/images/sports/sport_goal_1773192783639.png", link: "/products" },
-        { name: "Training Cones", image: "/images/sports/sport_cones_1773192767300.png", link: "/products" },
-        { name: "Whistles", image: "/images/sports/sport_whistle_1773192726671.png", link: "/products" },
-        { name: "Uniforms", image: "/images/sports/sport_jersey_1773192663046.png", link: "/products" },
-    ];
-
-    const kitItems: GridItem[] = [
-        { name: "Sublimation", image: "/images/sports/sport_jersey_1773192663046.png", link: "/products" },
-        { name: "Coaching Polos", image: "/images/sports/sport_polo_1773192716361.png", link: "/products" },
-        { name: "Soccer Balls", image: "/images/sports/sport_soccerball_1773192675083.png", link: "/products" },
-        { name: "Footwear", image: "/images/sports/sport_cleats_1773192686506.png", link: "/products" },
+    const petItems: GridItem[] = [
+        { name: "Toys", image: "https://images.pexels.com/photos/208773/pexels-photo-208773.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Beds", image: "https://images.pexels.com/photos/1782298/pexels-photo-1782298.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Food", image: "https://images.pexels.com/photos/6816867/pexels-photo-6816867.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
+        { name: "Apparel", image: "https://images.pexels.com/photos/18411516/pexels-photo-18411516.jpeg?auto=compress&cs=tinysrgb&w=800", link: "/products" },
     ];
 
     return (
@@ -77,9 +77,9 @@ function DiscoveryGrid() {
 
                 {/* Card 4: Trending spring bags (2x2 Grid) */}
                 <AmazonGridCard
-                    title="Trending spring fan gear"
-                    items={fanGearItems}
-                    linkText="Shop pre-loved styles"
+                    title="Featured Basketball Equipment"
+                    items={basketballItems}
+                    linkText="Shop all basketball"
                     linkHref="/products"
                 />
 
@@ -105,34 +105,34 @@ function DiscoveryGrid() {
                     </div>
                 </div>
 
-                {/* Card 6: Gaming accessories (2x2 Grid) */}
+                {/* Card 6: Electronics & Home Deals (2x2 Grid) */}
                 <AmazonGridCard
-                    title="Field & Court Equipment"
-                    items={fieldItems}
-                    linkText="See more"
+                    title="Continue shopping deals"
+                    items={dealsItems}
+                    linkText="See more deals"
                     linkHref="/products"
                 />
 
                 {/* Card 7: Shop for your pets (2x2 Grid) */}
                 <AmazonGridCard
-                    title="Team Uniforms & Kits"
-                    items={kitItems}
+                    title="Categories for your pets"
+                    items={petItems}
                     linkText="See more"
                     linkHref="/products"
                 />
 
                 {/* Card 8: Home Arrivals (Thumbnail Card) */}
                 <AmazonThumbnailCard
-                    title="New arrivals in Team Gear"
-                    mainImage="https://images.pexels.com/photos/163444/sport-treadmill-tor-route-163444.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    mainImageAlt="Team Gear new arrivals"
+                    title="New arrivals in Home"
+                    mainImage="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    mainImageAlt="Home new arrivals"
                     thumbnails={[
-                        "/images/sports/sport_trophy_1773192755404.png",
-                        "/images/sports/sport_cap_1773192700319.png",
-                        "/images/sports/sport_whistle_1773192726671.png",
-                        "/images/sports/sport_kneepads_1773192648510.png"
+                        "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+                        "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800",
+                        "https://images.pexels.com/photos/3935316/pexels-photo-3935316.jpeg?auto=compress&cs=tinysrgb&w=800",
+                        "https://images.pexels.com/photos/6489083/pexels-photo-6489083.jpeg?auto=compress&cs=tinysrgb&w=800"
                     ]}
-                    linkText="Shop the latest arrivals"
+                    linkText="Shop the latest from Home"
                     linkHref="/products"
                 />
 
