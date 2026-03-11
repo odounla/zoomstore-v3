@@ -25,7 +25,7 @@ const coachingPolos = [
         company: "Basketzoom",
         description: "Adult 2-Color Accented Polo Shirt. Colors: Navy/Red/White, Royal/Black/White, Navy/Graphite. Best For: Staff, Volunteers, Team Unity.",
         featured: true,
-        image: "https://epicsports.cachefly.net/images/149652/500/adult-2-color-accented-polo-shirt.jpg",
+        image: "/images/sports/sport_polo_accented_new.png",
         price: 1599,
         clerkId: "seed_coaching_polos",
     }
