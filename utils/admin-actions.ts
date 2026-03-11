@@ -4,7 +4,8 @@ import db from "@/utils/db";
 import { revalidatePath } from "next/cache";
 import { requireAdminUser } from "@/utils/auth";
 import { z } from "zod";
-import { validateWithZodSchema } from "@/utils/schemas";
+import { validateWithZodSchema, productUpdateSchema, imageSchema } from "@/utils/schemas";
+import { uploadImage } from "@/utils/supabase";
 
 const categorySchema = z.object({
   name: z.string().min(2, "name must be at least 2 characters."),
@@ -34,6 +35,25 @@ export const deleteProductAction = async (
   await db.product.delete({ where: { id: productId } });
   revalidatePath("/admin/products");
   return { message: "Product deleted" };
+};
+
+export const toggleProductVisibilityAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  await requireAdminUser();
+  const productId = formData.get("productId") as string;
+  const currentFeatured = formData.get("featured") === "true";
+
+  if (!productId) return { message: "Product ID is required" };
+
+  await db.product.update({
+    where: { id: productId },
+    data: { featured: !currentFeatured },
+  });
+
+  revalidatePath("/admin/products");
+  return { message: "Visibility updated" };
 };
 
 export const fetchAdminCategories = async () => {
@@ -142,4 +162,46 @@ export const fetchAdminMetrics = async () => {
     refundedRevenue: refundAgg._sum.orderTotal || 0,
     topProducts,
   };
+};
+
+export const updateProductAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  await requireAdminUser();
+  const productId = formData.get("id") as string;
+
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(productUpdateSchema, rawData);
+
+    const file = formData.get("image") as File;
+    let fullPath;
+
+    if (file && file.size > 0) {
+      const validatedFile = validateWithZodSchema(imageSchema, { image: file });
+      fullPath = await uploadImage(validatedFile.image);
+    }
+
+    const updateData: any = {
+      ...validatedFields,
+    };
+
+    if (fullPath) {
+      updateData.image = fullPath;
+    }
+
+    await db.product.update({
+      where: { id: productId },
+      data: updateData,
+    });
+
+    revalidatePath(`/admin/products/${productId}/edit`);
+    return { message: "Product updated successfully" };
+  } catch (error) {
+    console.error("Error updating product:", error);
+    return {
+      message: error instanceof Error ? error.message : "an error occurred",
+    };
+  }
 };

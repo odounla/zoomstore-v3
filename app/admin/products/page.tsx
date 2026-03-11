@@ -1,4 +1,4 @@
-import { fetchAdminProducts, deleteProductAction } from "@/utils/admin-actions";
+import { fetchAdminProducts, deleteProductAction, toggleProductVisibilityAction } from "@/utils/admin-actions";
 import {
   Table,
   TableBody,
@@ -31,7 +31,7 @@ export default async function ProductsPage() {
             <TableHead>Company</TableHead>
             <TableHead>Category</TableHead>
             <TableHead>Price</TableHead>
-            <TableHead>Featured</TableHead>
+            <TableHead>Visibility</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -42,8 +42,19 @@ export default async function ProductsPage() {
               <TableCell>{product.company}</TableCell>
               <TableCell>{product.category?.name || "Uncategorized"}</TableCell>
               <TableCell>{formatCurrency(product.price)}</TableCell>
-              <TableCell>{product.featured ? "Yes" : "No"}</TableCell>
-              <TableCell className="text-right">
+              <TableCell>
+                <FormContainer action={toggleProductVisibilityAction}>
+                  <input type="hidden" name="productId" value={product.id} />
+                  <input type="hidden" name="featured" value={product.featured.toString()} />
+                  <button type="submit" className={`text-xs px-2 py-1 rounded border transition-colors ${product.featured ? 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100' : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100'}`}>
+                    {product.featured ? 'Online' : 'Offline'}
+                  </button>
+                </FormContainer>
+              </TableCell>
+              <TableCell className="text-right flex items-center justify-end gap-2">
+                <Link href={`/admin/products/${product.id}/edit`} className="text-sm border px-3 py-1.5 rounded-md shadow-sm hover:bg-gray-50 font-medium">
+                  Edit
+                </Link>
                 <FormContainer action={deleteProductAction}>
                   <input type="hidden" name="productId" value={product.id} />
                   <SubmitButton size="sm" text="Delete" />
